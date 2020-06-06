@@ -250,6 +250,7 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.1)
   rails-controller-testing
   rspec-rails
+  rubyzip
   sass-rails (>= 6)
   selenium-webdriver
   spring

@@ -23,7 +23,8 @@
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-    <%= link_to "CSV出力", users_path(format: :csv) %>
+    <%= link_to "CSVデータDL", users_path(format: :csv) %>
+    <%= link_to "ZipデータDL", user_files_path %>
   </tbody>
 </table>
 
