@@ -6,6 +6,6 @@ FactoryBot.define do
   factory :user do
     name
     age { [*1..100].sample }
-    gender { ["male", "femail"].sample }
+    gender { User.gender.values.sample }
   end
 end
