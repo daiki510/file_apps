@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @users = User.all
     respond_to do |format|
       format.html
-      format.csv { send_data render_to_string, filename: "users.csv", type: :csv }
+      format.csv { send_data render_to_string, filename: "users_list_#{Time.now.strftime("%Y%m%d%H%M%S")}.csv", type: :csv }
     end
   end
 

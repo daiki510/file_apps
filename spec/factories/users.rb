@@ -1,7 +1,11 @@
 FactoryBot.define do
+  sequence :name do |n|
+    "user_#{n}"
+  end
+
   factory :user do
-    name { "MyString" }
-    age { 1 }
-    gender { "MyString" }
+    name
+    age { [*1..100].sample }
+    gender { ["male", "femail"].sample }
   end
 end
