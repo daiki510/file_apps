@@ -8,9 +8,9 @@ class UserZip
 
   def generate
     tempfile = Tempfile.open(["user", ".zip"])
-    @users.each do |user|
-      Zip::OutputStream.open(tempfile.path) do |zos|
-        zos.put_next_entry("#{user.id}.csv")
+    Zip::OutputStream.open(tempfile.path) do |zos|
+      @users.each do |user|
+        zos.put_next_entry("user_#{user.id}.csv")
         zos.puts create_csv(user)
       end
     end
