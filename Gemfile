@@ -15,6 +15,7 @@ gem 'enumerize'
 gem 'rubyzip'
 
 group :development, :test do
+  #debug
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
   gem 'better_errors'
@@ -23,6 +24,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  #LintTools
+  gem 'rubocop', '~> 0.85.1', require: false
 end
 
 group :development do
