@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserZip
   require "zip"
   require "csv"
@@ -18,18 +20,17 @@ class UserZip
   end
 
   private
-
-  def create_csv(user)
-    CSV.generate do |csv|
-      csv_column_names = %w(name age gender created_at)
-      csv << csv_column_names
-      column_values = [
-        user.name,
-        user.age,
-        user.gender,
-        user.created_at
-      ]
-      csv << column_values
+    def create_csv(user)
+      CSV.generate do |csv|
+        csv_column_names = %w(name age gender created_at)
+        csv << csv_column_names
+        column_values = [
+          user.name,
+          user.age,
+          user.gender,
+          user.created_at
+        ]
+        csv << column_values
+      end
     end
-  end
 end

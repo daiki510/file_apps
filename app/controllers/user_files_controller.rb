@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserFilesController < ApplicationController
   def index
     @users = User.all.order(:id)

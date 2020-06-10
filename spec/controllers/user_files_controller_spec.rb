@@ -1,7 +1,8 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe UserFilesController, type: :controller do
-
   describe "GET #index" do
     before do
       @users = create_list(:user, 10)
@@ -18,5 +19,4 @@ RSpec.describe UserFilesController, type: :controller do
       expect(response["Content-Type"]).to eq "application/zip"
     end
   end
-
 end

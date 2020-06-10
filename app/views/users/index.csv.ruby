@@ -1,4 +1,6 @@
-require 'csv'
+# frozen_string_literal: true
+
+require "csv"
 
 CSV.generate do |csv|
   csv_column_names = %w(name age gender created_at)

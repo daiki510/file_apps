@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe UsersController, type: :controller do
   describe "GET #index" do
@@ -134,5 +136,4 @@ RSpec.describe UsersController, type: :controller do
   #     expect(response).to redirect_to(users_url)
   #   end
   # end
-
 end
