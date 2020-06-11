@@ -4,12 +4,14 @@ on: [push]
 jobs:
   sample:
     runs-on: ubuntu-latest
+    container:
+      image: ruby:2.6.3
     steps:
       - uses: actions/checkout@v1.1.0
       - name: Set up Ruby version
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: 2.6.3
+          ruby-version: 2.6.x
 
       - name: Set up bundler
         run: gem install bundler
