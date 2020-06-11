@@ -1,0 +1,20 @@
+name: sample
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1.1.0
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.x
+      - run: |
+          ruby -v
+          ruby -e 'puts Time.now'
+      - name: uses sample
+        uses: ./.github/actions/sample
+        with:
+          params1: 'value1'
