@@ -1,7 +1,5 @@
 name: sample
-on:
-  pull_request:
-    types: [opened, synchronize]
+on: [push]
 
 jobs:
   sample:
@@ -12,9 +10,5 @@ jobs:
         with:
           ruby-version: 2.6.x
       - run: |
-          ruby -v
-          ruby -e 'puts Time.now'
-      - name: uses sample
-        uses: ./.github/actions/sample
-        with:
-          params1: 'value1'
+          bundle exec rubocop
+          bundle exec rspec
