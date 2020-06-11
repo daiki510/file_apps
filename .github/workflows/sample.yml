@@ -6,10 +6,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1.1.0
+      - name: Set up Ruby version
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.6.x
-      - run: |
-          bundle install
-          bundle exec rubocop
-          bundle exec rspec
+
+      - name: Set up bundler
+        run: gem install bundler
+
+      - name: bundle install
+        run: bundle install --jobs 4 --retry 3
+
+      - name: Run rubocop
+      - run: bundle exec rubocop
+
+      - name: Run Rspec
+      - run: bundle exec rspec
