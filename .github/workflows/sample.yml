@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1.1.0
       - name: Set up Ruby version
-      - uses: actions/setup-ruby@v1
+        uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.6.x
 
@@ -18,7 +18,7 @@ jobs:
         run: bundle install --jobs 4 --retry 3
 
       - name: Run rubocop
-      - run: bundle exec rubocop
+        run: bundle exec rubocop
 
       - name: Run Rspec
-      - run: bundle exec rspec
+        run: bundle exec rspec
