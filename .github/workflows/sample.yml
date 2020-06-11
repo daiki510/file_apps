@@ -9,7 +9,7 @@ jobs:
       - name: Set up Ruby version
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: 2.6.x
+          ruby-version: 2.6.3
 
       - name: Set up bundler
         run: gem install bundler
