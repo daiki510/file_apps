@@ -4,6 +4,11 @@ on: [push]
 jobs:
   sample:
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: password
     container:
       image: ruby:2.6.3
     steps:
@@ -13,6 +18,9 @@ jobs:
         with:
           ruby-version: 2.6.x
 
+      - name: Install dependent libralies
+        run: sudo apt-get install libmysqlclient-dev
+
       - name: Set up bundler
         run: gem install bundler
 
@@ -21,6 +29,14 @@ jobs:
 
       - name: Run rubocop
         run: bundle exec rubocop
+
+      - name: Setup Database
+        run: |
+          cp config/database.yml.ci config/database.yml
+          bundle exec rails db:create
+          bundle exec rails db:schema:load
+        env:
+          RAILS_ENV: test
 
       - name: Run Rspec
         run: bundle exec rspec
