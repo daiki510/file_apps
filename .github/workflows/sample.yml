@@ -10,5 +10,6 @@ jobs:
         with:
           ruby-version: 2.6.x
       - run: |
+          bundle install
           bundle exec rubocop
           bundle exec rspec
