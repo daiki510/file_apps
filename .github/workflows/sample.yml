@@ -38,3 +38,14 @@ jobs:
 
       - name: Run Rspec
         run: bundle exec rspec
+
+      - name: Slack Notification when build failed
+        if: failure()
+        uses: rtCamp/action-slack-notify@master
+        env:
+          SLACK_CHANNEL: github-notify
+          SLACK_COLOR: '#ff0000'
+          SLACK_TITLE: ':fire::fire::fire: Build error! :fire::fire::fire:'
+          SLACK_MESSAGE: "Build error! Please check github!"
+          SLACK_USERNAME: GitHub Actions
+          SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
