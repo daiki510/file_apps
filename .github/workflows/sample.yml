@@ -19,6 +19,9 @@ jobs:
         with:
           ruby-version: 2.6.x
 
+      - name: Install dependent libralies
+        run: sudo apt-get install libmysqlclient-dev
+
       - name: Set up bundler
         run: gem install bundler
 
