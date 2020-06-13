@@ -1,20 +1,51 @@
 name: sample
-on:
-  pull_request:
-    types: [opened, synchronize]
+on: [push]
 
 jobs:
   sample:
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_USER: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+    container:
+      image: ruby:2.6.3
     steps:
       - uses: actions/checkout@v1.1.0
-      - uses: actions/setup-ruby@v1
+      - name: Set up Ruby version
+        uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.6.x
-      - run: |
-          ruby -v
-          ruby -e 'puts Time.now'
-      - name: uses sample
-        uses: ./.github/actions/sample
-        with:
-          params1: 'value1'
+
+      - name: Set up bundler
+        run: gem install bundler
+
+      - name: bundle install
+        run: bundle install --jobs 4 --retry 3
+
+      - name: Run rubocop
+        run: bundle exec rubocop
+
+      - name: Setup Database
+        run: |
+          cp config/database.yml.ci config/database.yml
+          bundle exec rails db:create
+          bundle exec rails db:schema:load
+        env:
+          RAILS_ENV: test
+
+      - name: Run Rspec
+        run: bundle exec rspec
+
+      - name: Slack Notification when build failed
+        if: failure()
+        uses: rtCamp/action-slack-notify@master
+        env:
+          SLACK_CHANNEL: github-notify
+          SLACK_COLOR: '#ff0000'
+          SLACK_TITLE: ':fire::fire::fire: Build error! :fire::fire::fire:'
+          SLACK_MESSAGE: "Build error! Please check github!"
+          SLACK_USERNAME: GitHub Actions
+          SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
