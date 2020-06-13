@@ -20,7 +20,7 @@ jobs:
           ruby-version: 2.6.x
 
       - name: Install dependent libralies
-        run: sudo apt-get install libmysqlclient-dev
+        run: apt-get install libmysqlclient-dev
 
       - name: Set up bundler
         run: gem install bundler
@@ -34,7 +34,7 @@ jobs:
       - name: Setup Database
         run: |
           cp config/database.yml.ci config/database.yml
-          sudo /etc/init.d/mysql start
+          /etc/init.d/mysql start
           bundle exec rails db:create
           bundle exec rails db:schema:load
         env:
