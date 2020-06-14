@@ -12,8 +12,14 @@ jobs:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
     container:
       image: ruby:2.6.3
+      env:
+        RAILS_ENV: test
     steps:
       - uses: actions/checkout@v1.1.0
+      - uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: bundle-${{ hashFiles('**/Gemfile.lock') }}
       - name: Set up Ruby version
         uses: actions/setup-ruby@v1
         with:
