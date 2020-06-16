@@ -34,16 +34,16 @@ jobs:
       - name: Run rubocop
         run: bundle exec rubocop
 
-      - name: Setup Database
-        run: |
-          cp config/database.yml.ci config/database.yml
-          bundle exec rails db:create
-          bundle exec rails db:schema:load
-        env:
-          RAILS_ENV: test
+      # - name: Setup Database
+      #   run: |
+      #     cp config/database.yml.ci config/database.yml
+      #     bundle exec rails db:create
+      #     bundle exec rails db:schema:load
+      #   env:
+      #     RAILS_ENV: test
 
-      - name: Run Rspec
-        run: bundle exec rspec
+      # - name: Run Rspec
+      #   run: bundle exec rspec
 
       - name: Slack Notification when build failed
         if: failure()
