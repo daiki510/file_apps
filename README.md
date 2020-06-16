@@ -1,24 +1,15 @@
 # README
+## 機能一覧
+- csvファイル作成
+- zipファイル作成
+- Github Actionsによる自動化
+  - Rspec
+  - Rubocop
+- Slack通知
+  - Githubと連携して、コミット、PRやGAの結果を通知
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用している技術
+- Zip
+- Csv
+- Github Actions
+- Slack連携
