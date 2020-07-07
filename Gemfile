@@ -15,11 +15,11 @@ gem "jbuilder", "~> 2.7"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "enumerize"
 
-#ファイル関連
+# ファイル関連
 gem "rubyzip"
 gem "shrine", "~> 3.0"
-gem 'image_processing'
-gem 'mini_magick'
+gem "image_processing"
+gem "mini_magick"
 
 group :development, :test do
   # debug

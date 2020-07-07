@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "image_processing/mini_magick"
 
 class ImageUploader < Shrine
@@ -21,7 +23,7 @@ class ImageUploader < Shrine
   end
 
   Attacher.validate do
-    validate_max_size 5 * 1024 * 1024, message: '5MBを超える画像はアップロードできません。'
+    validate_max_size 5 * 1024 * 1024, message: "5MBを超える画像はアップロードできません。"
     validate_mime_type_inclusion %w(image/jpeg image/png)
   end
 end
