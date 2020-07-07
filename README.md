@@ -2,6 +2,10 @@
 ## 機能一覧
 - csvファイル作成
 - zipファイル作成
+  - rubyzip
+- 画像ファイルアップロード
+  - shrine
+  - mini-magick
 - Github Actionsによる自動化
   - Rspec
   - Rubocop
