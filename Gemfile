@@ -17,7 +17,7 @@ gem "enumerize"
 
 # ファイル関連
 gem "rubyzip"
-gem "shrine", "~> 3.0"
+gem "shrine", "~> 3.3"
 gem "image_processing"
 gem "mini_magick"
 
